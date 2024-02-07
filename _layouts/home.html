@@ -8,40 +8,12 @@ bodyClass: "page-home"
     <div class="row justify-content-start">
       <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
         {{ content }}
-        {% if page.show_call_box %}
-          {% include call.html show_button=true %}
-        {% endif %}
       </div>
       {% if page.intro_image %}
       <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
         <img alt="{{ page.title }}" class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relURL }}" />
       </div>
       {% endif %}
-    </div>
-  </div>
-</div>
-
-<div class="strip">
-  <div class="container pt-6 pb-6 pb-md-10">
-    <div class="row justify-content-start">
-      {% assign limit = site.home.limit_services | default: 6 %}
-      {% for service in site.services limit: limit %}
-      <div class="col-12 col-md-4 mb-1">
-        <div class="service service-summary">
-          <div class="service-content">
-            <h2 class="service-title">
-              <a href="{{ service.url | relative_url }}">{{ service.title }}</a>
-            </h2>
-            <p>{{ service.excerpt | markdownify | strip_html | truncate: 100 }}</p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <a class="button button-primary" href="{{ "services" | relative_url }}">View All Services</a>
-      </div>
     </div>
   </div>
 </div>
@@ -67,3 +39,22 @@ bodyClass: "page-home"
   </div>
 </div>
 {% endif %}
+
+<div class="strip">
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="row justify-content-start">
+      <div class="container section mx-auto"><div class="about-us__content"><h2 class="section__title sal-animate" data-sal="fade" data-sal-easing="ease-in-cubic">About Us</h2><p data-sal="slide-up" data-sal-easing="ease-in-cubic" data-sal-delay="100" class="sal-animate">Andouille ball tip chislic sirloin jerky pig beef ribs brisket fatback ground round biltong bacon shoulder landjaeger. </p><ul class="mt-10 md:ml-8"><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">alarm_on</i><div class="item__content"><h3 class="item__title">Fast Service Delivery</h3><p class="item__text md:w-3/4">Meatball qui laboris buffalo drumstick prosciutto sed eiusmod.</p></div></div></li><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">fingerprint</i><div class="item__content"><h3 class="item__title">Secured Apps</h3><p class="item__text md:w-3/4">Chislic frankfurter kevin, strip steak chicken tongue tri-tip.</p></div></div></li><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">timeline</i><div class="item__content"><h3 class="item__title">Increased Leads</h3><p class="item__text md:w-3/4">Leberkas brisket doner, ham cupim hamburger beef</p></div></div></li></ul></div><div class="about-us__image"><div class="mx-auto about-us__image-wrap sal-animate" data-sal="slide-up" data-sal-delay="200" data-sal-duration="500"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:81.66666666666667%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAMAAAAhxq8pAAABj1BMVEUAAABVTlk/PldCQVo/PVc/PVY/PVZ9ecuFgNl7d8Y/PVaFgNiDf9ZOTGOsq8Copsisq8SpqbM/PVY/PVZaWG2ysbq0s7ypqbNAPFdAPFZfTGA/PVZAPVZBPlZAPVdAPFdAPVdXT1lAPVdFQltpVmxQTmlkUmdLSGJaV4iFgNlqZ6d5dcOFgNlVU3BVU25VU25VU25wbLGIg956dsSCfdOIg95wbLJVU25VU25VU24/PVY/PVaSkZ+ysrqko66ysbqioaxVU25VU25VU25TTFk/PVZEQls/PVY/PVZSUGpnVmxVU24+PVV/e86Hgt1/es0/PVc/PFZBP1hFQ1xHQViGgdqIhN+Ef9Y/PFY/PVY/PVY/PVbJyc7j4+Xc29/U09jy8vLc3N/NzdI/PVY/PVY/PVbX1trn5+g/PVbl5eff3+Hy8vLl5efb294/PVY/PVY/PVY/PVY/PVZ7d8aEgNiHgtxQTnNraKhjYJeFgNhxbbOIg96Ig96IhN+AfM2Ef9WEgNaIg96BfdKJhOBVU25QTjSoAAAAg3RSTlMALxUrGBcILXJKC2SaCUdWSykmAQp5eFEFBkg0+joNCgwsDxGPSOUuFoAPFX1o9u8KK9QjMtETyv4RBgknOyAgHOPfGDMVHRYN4csGCz2kawoU7PR5VuePC+uab2V6dGUGhkjKXmiJqweojArJZr5NaQwKF26V5sO6cCRIvub39+fBVR/v4k0AAAAJcEhZcwAAFxEAABcRAcom8z8AAAAHdElNRQfkCQcJFwWr/uJqAAAApUlEQVQYGQXBvy0EYADA0fdzn7g/kYhKtBqNBdQUErXQWkHDCCprEAawgN4ENrj25HLJ8V5FbU02AIzdQr/TDQDDeMQzAGi/UOsVcNjS2CtofRSqlsY8YFZURQBOq+rmve8BYFZVZhnAeV+LajvJPIOLqMvJJ1yZJq4L1R926sPANPR2+4q7YnDQz0l1v4J5MZh3VtUKFsVgEXDsoaqnBi8AplXVP8ppGa6pjgtIAAAAAElFTkSuQmCC" alt="" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center center; opacity: 0; transition-delay: 500ms;"><picture><source srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&amp;h=163&amp;q=100 200w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&amp;h=327&amp;q=100 400w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&amp;h=392&amp;q=100 480w" sizes="(max-width: 800px) 100vw, 800px"><img sizes="(max-width: 800px) 100vw, 800px" srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&amp;h=163&amp;q=100 200w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&amp;h=327&amp;q=100 400w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&amp;h=392&amp;q=100 480w" src="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=800&amp;q=100" alt="" loading="lazy" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center center; opacity: 1; transition: opacity 500ms ease 0s;"></picture><noscript><picture><source srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&h=163&q=100 200w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&h=327&q=100 400w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&h=392&q=100 480w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&h=163&q=100 200w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&h=327&q=100 400w,
+//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&h=392&q=100 480w" src="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=800&q=100" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></div></div></div>
+      
+    </div>
+  </div>
+</div>
+
+
