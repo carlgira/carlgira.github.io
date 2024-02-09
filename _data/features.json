@@ -1,27 +1,27 @@
 [
   {
-    "title": "Empathy",
-    "description": "The ability to understand and share the feelings of others",
+    "title": "Nurture Empathy",
+    "description": "",
     "image": {
-      "url": "images/features/noun_branding_1885335.svg",
+      "url": "images/features/empathy.png",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Critical Thinking",
-    "description": "It enable us to analyze information objectively",
+    "title": "Sharpen your Critical Thinking",
+    "description": "",
     "image": {
-      "url": "images/features/noun_The Process_1885341.svg",
+      "url": "images/features/critical.png",
       "width": 80,
       "height": 80
     }
   },
   {
-    "title": "Biases",
-    "description": "Preconceived notions or prejudices against individuals",
+    "title": "Question your assumptions",
+    "description": "",
     "image": {
-      "url": "images/features/noun_3d modeling_1885342.svg",
+      "url": "images/features/biases.png",
       "width": 80,
       "height": 80
     }

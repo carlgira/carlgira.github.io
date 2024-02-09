@@ -40,21 +40,149 @@ bodyClass: "page-home"
 </div>
 {% endif %}
 
+<style>
+
+
+  .about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+  }
+
+  .strip-odd{
+    background-color: #f7f7f7;
+  }
+
+  .strip-even{
+    background-color: #f7f7f7;
+  }
+  
+  .image-container {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .text-container {
+    flex: 1;
+    padding: 20px;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .text-container h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .icon-container::before {
+  content: "";
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  --bg-opacity: 1;
+  background-color: #6c63ff;
+  background-color: rgba(230,37,31,var(--bg-opacity));
+  border-radius: 9999px;
+  margin-right: .75rem;
+}
+
+  .text-container p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .text-container ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .text-container ul li {
+    padding: 5px 0;
+    font-size: 16px;
+    color: #666;
+  }
+
+  .text-container ul li::before {
+    content: '*';
+    color: #e6251f;
+    margin-right: 10px;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+</style>
+
+
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">
-    <div class="row justify-content-start">
-      <div class="container section mx-auto"><div class="about-us__content"><h2 class="section__title sal-animate" data-sal="fade" data-sal-easing="ease-in-cubic">About Us</h2><p data-sal="slide-up" data-sal-easing="ease-in-cubic" data-sal-delay="100" class="sal-animate">Andouille ball tip chislic sirloin jerky pig beef ribs brisket fatback ground round biltong bacon shoulder landjaeger. </p><ul class="mt-10 md:ml-8"><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">alarm_on</i><div class="item__content"><h3 class="item__title">Fast Service Delivery</h3><p class="item__text md:w-3/4">Meatball qui laboris buffalo drumstick prosciutto sed eiusmod.</p></div></div></li><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">fingerprint</i><div class="item__content"><h3 class="item__title">Secured Apps</h3><p class="item__text md:w-3/4">Chislic frankfurter kevin, strip steak chicken tongue tri-tip.</p></div></div></li><li class="mb-6"><div class="item sal-animate" data-sal="slide-up" data-sal-easing="ease-in-cubic"><i class="item__icon material-icons text-primary">timeline</i><div class="item__content"><h3 class="item__title">Increased Leads</h3><p class="item__text md:w-3/4">Leberkas brisket doner, ham cupim hamburger beef</p></div></div></li></ul></div><div class="about-us__image"><div class="mx-auto about-us__image-wrap sal-animate" data-sal="slide-up" data-sal-delay="200" data-sal-duration="500"><div class=" gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:81.66666666666667%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAMAAAAhxq8pAAABj1BMVEUAAABVTlk/PldCQVo/PVc/PVY/PVZ9ecuFgNl7d8Y/PVaFgNiDf9ZOTGOsq8Copsisq8SpqbM/PVY/PVZaWG2ysbq0s7ypqbNAPFdAPFZfTGA/PVZAPVZBPlZAPVdAPFdAPVdXT1lAPVdFQltpVmxQTmlkUmdLSGJaV4iFgNlqZ6d5dcOFgNlVU3BVU25VU25VU25wbLGIg956dsSCfdOIg95wbLJVU25VU25VU24/PVY/PVaSkZ+ysrqko66ysbqioaxVU25VU25VU25TTFk/PVZEQls/PVY/PVZSUGpnVmxVU24+PVV/e86Hgt1/es0/PVc/PFZBP1hFQ1xHQViGgdqIhN+Ef9Y/PFY/PVY/PVY/PVbJyc7j4+Xc29/U09jy8vLc3N/NzdI/PVY/PVY/PVbX1trn5+g/PVbl5eff3+Hy8vLl5efb294/PVY/PVY/PVY/PVY/PVZ7d8aEgNiHgtxQTnNraKhjYJeFgNhxbbOIg96Ig96IhN+AfM2Ef9WEgNaIg96BfdKJhOBVU25QTjSoAAAAg3RSTlMALxUrGBcILXJKC2SaCUdWSykmAQp5eFEFBkg0+joNCgwsDxGPSOUuFoAPFX1o9u8KK9QjMtETyv4RBgknOyAgHOPfGDMVHRYN4csGCz2kawoU7PR5VuePC+uab2V6dGUGhkjKXmiJqweojArJZr5NaQwKF26V5sO6cCRIvub39+fBVR/v4k0AAAAJcEhZcwAAFxEAABcRAcom8z8AAAAHdElNRQfkCQcJFwWr/uJqAAAApUlEQVQYGQXBvy0EYADA0fdzn7g/kYhKtBqNBdQUErXQWkHDCCprEAawgN4ENrj25HLJ8V5FbU02AIzdQr/TDQDDeMQzAGi/UOsVcNjS2CtofRSqlsY8YFZURQBOq+rmve8BYFZVZhnAeV+LajvJPIOLqMvJJ1yZJq4L1R926sPANPR2+4q7YnDQz0l1v4J5MZh3VtUKFsVgEXDsoaqnBi8AplXVP8ppGa6pjgtIAAAAAElFTkSuQmCC" alt="" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center center; opacity: 0; transition-delay: 500ms;"><picture><source srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&amp;h=163&amp;q=100 200w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&amp;h=327&amp;q=100 400w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&amp;h=392&amp;q=100 480w" sizes="(max-width: 800px) 100vw, 800px"><img sizes="(max-width: 800px) 100vw, 800px" srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&amp;h=163&amp;q=100 200w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&amp;h=327&amp;q=100 400w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&amp;h=392&amp;q=100 480w" src="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=800&amp;q=100" alt="" loading="lazy" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center center; opacity: 1; transition: opacity 500ms ease 0s;"></picture><noscript><picture><source srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&h=163&q=100 200w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&h=327&q=100 400w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&h=392&q=100 480w" sizes="(max-width: 800px) 100vw, 800px" /><img loading="lazy" sizes="(max-width: 800px) 100vw, 800px" srcset="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=200&h=163&q=100 200w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=400&h=327&q=100 400w,
-//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=480&h=392&q=100 480w" src="//images.ctfassets.net/p9ztf7mkb1tk/6NxcbCwwDnZOS0fQ3UTjOv/cfcea2f4bb23fff185a0d4ede6357b2b/about.png?w=800&q=100" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></div></div></div>
-      
+    <div class="about-section">
+      <div class="image-container {% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}">
+        <img src="images/illustrations/empathy.png" width="500" alt="Company Image">
+      </div>
+      <div class="text-container">
+        <h2 class="icon-container">Empathy</h2>
+        <p>Empathy is the ability to understand and share the feelings of others, is fundamental to building strong, positive relationships. </p>
+        <br>
+        <ul>
+          <li>It fosters a sense of connection and trust, making it easier to collaborate, resolve conflicts</li><br>
+          <li>Empathizing with the experiences of others can lead to more compassionate societies</li><br>
+          <li>It can reduce prejudice, encourage helping behaviors, and promote social harmony</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="strip strip-odd" >
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="about-section">
+      
+      <div class="text-container">
+        <h2 class="icon-container">Critical Thinking</h2>
+        <p>Critical thinking enable us to analyze information objectively, identify logical connections, evaluate arguments, and solve problems effectively.</p><br>
+        <ul>
+          <li>This skill is crucial for managing today's information overload, which often includes misleading or biased content.</li> <br>
+          <li>The ability to critically evaluate the credibility of information and the motives behind it is more important than ever.</li><br>
+          <li>Critical awareness protects us from being manipulated or deceived.</li>
+        </ul>
+      </div>
+      <div class="image-container {% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}">
+        <img src="images/illustrations/critical.png" width="500" alt="Company Image">
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="strip">
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="about-section">
+      <div class="image-container {% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}">
+        <img src="images/illustrations/biases.png" width="500" alt="Company Image">
+      </div>
+      <div class="text-container">
+        <h2  class="icon-container">Biases</h2>
+        <p>Biases are preconceived notions or prejudices against individuals, groups, or ideas, often arising from stereotypes, cultural norms, personal experiences, or societal influences.</p><br>
+        <ul>
+          <li>Biases influence our decisions, behaviors, and judgments in ways we may not be fully aware of.</li><br>
+          <li>By questioning our own and others' assumptions, we can gain a more profound and detailed insight into complex matters.</li><br>
+          <li>This critical self-reflection is key to personal growth and societal progress.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
