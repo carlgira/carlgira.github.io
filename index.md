@@ -1,6 +1,6 @@
 ---
 title: Empathion
-meta_title: s Empathion
+meta_title: Empathion
 description: The Quiet Revolution to Save The World
 layout: home
 image: "images/illustrations/hero2.png"
